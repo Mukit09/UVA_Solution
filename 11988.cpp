@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<list>
+#include<cstring>
+using namespace std;
+char st[1000000];
+int main()
+{
+	list<long>lt;
+	long s,e,i,fg;
+	while(gets(st))
+	{
+		fg=1;
+		s=e=0;
+		for(i=0;st[i];i++)
+		{
+			if(st[i]=='[')
+			{
+				e=i-1;
+				if(fg)
+				{
+					lt.push_front(e);
+					lt.push_front(s);
+				}
+				else
+				{
+					lt.push_back(s);
+					lt.push_back(e);
+				}
+				fg=1;
+				s=i+1;
+			}
+			else if(st[i]==']')
+			{
+				e=i-1;
+				if(fg)
+				{
+					lt.push_front(e);
+					lt.push_front(s);
+				}
+				else
+				{
+					lt.push_back(s);
+					lt.push_back(e);
+				}
+				fg=0;
+				s=i+1;
+			}
+		}
+		e=strlen(st)-1;
+		if(s<=e)
+		{
+			if(fg)
+			{
+				lt.push_front(e);
+				lt.push_front(s);
+			}
+			else
+			{
+				lt.push_back(s);
+				lt.push_back(e);
+			}
+		}
+		while(!lt.empty())
+		{
+			s=lt.front();
+			lt.pop_front();
+			e=lt.front();
+			lt.pop_front();
+			for(i=s;i<=e;i++)
+				printf("%c",st[i]);
+		}
+		printf("\n");
+	}
+	return 0;
+}

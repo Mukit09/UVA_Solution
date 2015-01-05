@@ -1,0 +1,1 @@
+del *.dsp *.dsw *.plg *.ncb *.opt *.exe *.o
