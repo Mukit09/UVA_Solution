@@ -51,28 +51,31 @@ int main()
 				scanf("%ld",&y);
 				dfs(x-1,y-1);
 				printf("%ld\n",count);
-				getchar();
+                getchar();
 				fg=1;
-			}	 
+			}
 			else
 			{
 				while(gets(ch[i]))
 				{
 					if(strcmp(ch[i],"")==0)
-						break;
+                    {
+                        fg1=1;
+                        break;
+                    }
 					for(j=0;j<row;j++)
 						strcpy(re[j],ch[j]);
 					count=0;
 					sscanf(ch[i],"%ld%ld",&x,&y);
 					dfs(x-1,y-1);
 					printf("%ld\n",count);
-					fg1=1;
+
 				}
 			}
 			if(fg1)
 				break;
 		}
-        
+
         if(t)
 			printf("\n");
 	}
